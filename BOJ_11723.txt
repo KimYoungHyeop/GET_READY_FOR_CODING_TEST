@@ -1,0 +1,25 @@
+import sys
+n = 20
+m = int(sys.stdin.readline())
+k = 0
+
+for _ in range(m):
+    op, *num = sys.stdin.readline().split()
+    if len(num) > 0:
+        x = int(num[0])-1
+    if op == 'add':
+        k = (k | (1 << x))
+    elif op == 'remove':
+        k = (k & ~(1 << x))
+    elif op == 'check':
+        res = (k & (1 << x))
+        if res > 0:
+            sys.stdout.write('1\n')
+        else:
+            sys.stdout.write('0\n')
+    elif op == 'toggle':
+        k = (k ^ (1 << x))
+    elif op == 'all':
+        k = (1 << n) - 1
+    else:
+        k = 0
