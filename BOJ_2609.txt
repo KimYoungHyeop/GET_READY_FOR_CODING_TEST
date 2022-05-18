@@ -1,0 +1,10 @@
+def calc(x, y):
+    if y == 0:
+        return x
+    else:
+        return calc(y, x%y)
+    
+a,b = map(int, input().split())
+g = calc(a, b)
+print(g)
+print(a*b//g)
